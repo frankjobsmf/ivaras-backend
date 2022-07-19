@@ -10,6 +10,7 @@ const getAllUsers = (req = request, res = response) => {
 }
 
 
+
 module.exports = {
     getAllUsers
 }

@@ -12,6 +12,7 @@ class Server {
         this.port = process.env.PORT || 3001;
         this.userPath = '/api/users';
         this.examsPath = '/api/exams';
+        this.imagePath = '/api/images';
 
         //db
         this.connection();
@@ -32,6 +33,7 @@ class Server {
 
     middlewares(){
         this.app.use(express.json());
+        this.app.use(express.static('uploads'));
         this.app.use(cors());
     }
 
@@ -39,6 +41,7 @@ class Server {
     routes(){
         this.app.use(this.userPath, require('../routes/user'));
         this.app.use(this.examsPath, require('../routes/exams'));
+        this.app.use(this.imagePath, require('../routes/images'));
     }
 
     listen(){
